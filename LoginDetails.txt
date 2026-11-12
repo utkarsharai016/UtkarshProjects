@@ -1,0 +1,725 @@
+You are working on an existing ASP.NET Web Forms application. The project contains a `PFAD` module/folder with `Default.aspx`, internal pages, Master Pages, Login pages, CSS, JavaScript, and existing backend/database logic.
+
+Your task is to **standardize and redesign ONLY the UI/theme of the complete PFAD project**.
+
+The existing `PFAD/Default.aspx` page must be treated as the primary visual/design reference.
+
+## 1. MAIN OBJECTIVE
+
+Take the color/theme/design currently used on:
+
+`PFAD/Default.aspx`
+
+and apply the same professional visual language consistently to **all internal pages inside the PFAD project**.
+
+Also redesign the PFAD Login page so that it follows the same theme and looks modern, professional, clean, and responsive.
+
+The entire PFAD project must have one consistent visual identity.
+
+---
+
+# 2. STRICT COLOR PALETTE
+
+Use ONLY the following four PFAD theme colors throughout the PFAD project:
+
+```text
+#6C1340
+#A32966
+#EBADCC
+#FAEBF2
+```
+
+Define these colors centrally as CSS variables.
+
+Use a structure similar to:
+
+```css
+:root {
+    --pfad-primary-dark: #6C1340;
+    --pfad-primary: #A32966;
+    --pfad-accent: #EBADCC;
+    --pfad-light: #FAEBF2;
+}
+```
+
+Use these variables throughout the PFAD theme.
+
+Do NOT repeatedly hard-code the hex values throughout different pages.
+
+The goal is:
+
+**Change the color once → entire PFAD project theme changes automatically.**
+
+For example, if I later change:
+
+```css
+--pfad-primary: #A32966;
+```
+
+to another color, every PFAD component using that variable should automatically update.
+
+---
+
+# 3. CENTRALIZED CSS — VERY IMPORTANT
+
+Create or reuse ONE centralized PFAD stylesheet.
+
+Prefer something like:
+
+```text
+PFAD/
+    css/
+        pfad-theme.css
+```
+
+If the project already contains a suitable centralized PFAD CSS file, reuse it instead of unnecessarily creating another stylesheet.
+
+ALL common PFAD UI styling must be controlled from this centralized stylesheet.
+
+Do NOT create separate large `<style>` blocks in every `.aspx` page.
+
+Do NOT duplicate the same CSS across multiple pages.
+
+---
+
+# 4. PFAD CSS NAMESPACE / SINGLE THEME CONTAINER
+
+All PFAD-specific CSS should be isolated using one PFAD-specific namespace/container.
+
+Prefer:
+
+```html
+<div class="pfad-theme">
+    ...
+</div>
+```
+
+and CSS such as:
+
+```css
+.pfad-theme {
+    ...
+}
+
+.pfad-theme .pfad-header {
+    ...
+}
+
+.pfad-theme .pfad-navbar {
+    ...
+}
+
+.pfad-theme .pfad-sidebar {
+    ...
+}
+
+.pfad-theme .pfad-card {
+    ...
+}
+
+.pfad-theme .pfad-button {
+    ...
+}
+```
+
+If the existing Master Page already provides a suitable common wrapper, use that instead of unnecessarily modifying every page.
+
+The PFAD CSS must NOT affect unrelated modules or pages outside PFAD.
+
+---
+
+# 5. DEFAULT.ASPX IS THE DESIGN REFERENCE
+
+Before modifying anything:
+
+1. Inspect `PFAD/Default.aspx`.
+2. Identify its existing:
+   - Header
+   - Navigation
+   - Background
+   - Cards
+   - Buttons
+   - Tables
+   - Typography
+   - Borders
+   - Spacing
+   - Hover effects
+   - Section headings
+   - Forms
+   - Overall layout
+3. Preserve the good design concepts from `Default.aspx`.
+4. Convert them into reusable centralized PFAD CSS classes.
+5. Apply those reusable classes to the other PFAD pages.
+
+Do NOT simply copy the entire HTML of `Default.aspx` into other pages.
+
+Create a reusable theme instead.
+
+---
+
+# 6. APPLY TO ALL INTERNAL PFAD PAGES
+
+Find ALL pages inside the PFAD folder/module.
+
+Apply the same PFAD theme to:
+
+- Dashboard
+- Internal pages
+- Order pages
+- SiteMap
+- Forms
+- Reports
+- Tables
+- GridViews
+- Search pages
+- Data-entry pages
+- Any pages using Master Pages
+- Any other `.aspx` / `.ascx` UI belonging to PFAD
+
+The pages should visually look like they belong to the same application.
+
+Existing internal pages must retain their functionality.
+
+---
+
+# 7. LOGIN PAGE REDESIGN
+
+Redesign the PFAD Login page using the same four colors:
+
+```text
+#6C1340
+#A32966
+#EBADCC
+#FAEBF2
+```
+
+Make the Login UI modern and professional.
+
+Suggested design:
+
+- Full/light PFAD background
+- Centered login card
+- PFAD branded header
+- Clean username field
+- Clean password field
+- Modern login button
+- Rounded but professional controls
+- Subtle shadow
+- Proper spacing
+- Clear focus states
+- Responsive mobile layout
+- Consistent PFAD typography
+
+Use:
+
+```text
+#6C1340 → dark header / branding / important text
+#A32966 → buttons / primary actions
+#EBADCC → borders / accents / secondary highlights
+#FAEBF2 → page background / light sections
+```
+
+However, DO NOT change any Login functionality.
+
+Do not modify:
+
+- Username field ID
+- Password field ID
+- Login button ID
+- Captcha control
+- Captcha validation
+- Authentication
+- Session handling
+- Database validation
+- Redirects
+- Error handling
+- Security logic
+- Existing server-side events
+
+Only redesign the visual appearance.
+
+---
+
+# 8. HEADER / NAVBAR
+
+Make the PFAD header and navigation visually consistent.
+
+Use the PFAD colors for:
+
+- Header background
+- Navbar
+- Menu items
+- Active menu
+- Hover menu
+- Dropdown menus
+- Navigation borders
+
+Example concept:
+
+```css
+.pfad-theme .pfad-header {
+    background: var(--pfad-primary-dark);
+}
+
+.pfad-theme .pfad-navbar {
+    background: var(--pfad-primary);
+}
+
+.pfad-theme .pfad-navbar a:hover {
+    background: var(--pfad-primary-dark);
+}
+```
+
+Do not change menu functionality.
+
+---
+
+# 9. BUTTONS
+
+Create reusable PFAD button classes.
+
+Example:
+
+```css
+.pfad-theme .pfad-button {
+    background: var(--pfad-primary);
+    border: 1px solid var(--pfad-primary);
+}
+
+.pfad-theme .pfad-button:hover {
+    background: var(--pfad-primary-dark);
+}
+```
+
+Apply the design to existing ASP.NET controls such as:
+
+- Button
+- LinkButton
+- ImageButton where appropriate
+- Submit buttons
+- Search buttons
+- Save buttons
+- Update buttons
+- Delete buttons
+
+Do not change their event handlers.
+
+---
+
+# 10. CARDS / PANELS / SECTIONS
+
+Create reusable classes for:
+
+- Cards
+- Panels
+- Dashboard widgets
+- Section headers
+- Information boxes
+- Summary boxes
+
+Use the PFAD palette.
+
+Example:
+
+```css
+.pfad-theme .pfad-card {
+    background: #FFFFFF;
+    border: 1px solid var(--pfad-accent);
+}
+
+.pfad-theme .pfad-card-header {
+    background: var(--pfad-light);
+    color: var(--pfad-primary-dark);
+}
+```
+
+White may be used where required for readability and card surfaces, but the overall visual identity must remain based on the four PFAD colors.
+
+---
+
+# 11. TABLES / GRIDVIEW
+
+Standardize all PFAD tables and ASP.NET GridViews.
+
+Apply:
+
+- PFAD header color
+- PFAD row styling
+- Hover effect
+- Borders
+- Pagination styling
+- Responsive behavior where possible
+- Proper spacing
+
+Example:
+
+```css
+.pfad-theme .pfad-table th {
+    background: var(--pfad-primary-dark);
+    color: #FFFFFF;
+}
+
+.pfad-theme .pfad-table tr:hover {
+    background: var(--pfad-light);
+}
+```
+
+Do not change:
+
+- GridView columns
+- DataSource
+- BoundFields
+- TemplateFields
+- RowCommand
+- RowDataBound
+- Sorting
+- Paging logic
+- Database queries
+
+---
+
+# 12. FORM CONTROLS
+
+Standardize:
+
+- TextBox
+- DropDownList
+- CheckBox
+- RadioButton
+- FileUpload
+- Date controls
+- Search controls
+- Validation messages
+
+Use PFAD styling for borders, focus states, labels, and backgrounds.
+
+Do not change server control IDs or event handling.
+
+---
+
+# 13. RESPONSIVE DESIGN
+
+The complete PFAD project must be responsive.
+
+It should work correctly on:
+
+- Desktop
+- Laptop
+- Tablet
+- Mobile
+
+Do not break existing Web Forms postbacks.
+
+Do not change application behavior merely to achieve responsiveness.
+
+Use CSS/media queries wherever possible.
+
+---
+
+# 14. MASTER PAGE
+
+Inspect all PFAD Master Pages.
+
+If a Master Page is responsible for the common PFAD layout, prefer implementing the centralized theme there rather than modifying every individual page.
+
+Existing Master Page backend logic must remain unchanged.
+
+For example, the supplied Master Page code contains existing `Page_Load` and language-event logic. Do not modify such backend behavior just to change the UI.
+
+If the Master Page needs only a CSS reference or a wrapper class for the theme, make the minimum necessary presentation-only change.
+
+---
+
+# 15. ABSOLUTELY NO BUSINESS LOGIC CHANGES
+
+THIS IS THE MOST IMPORTANT REQUIREMENT.
+
+Do NOT modify business/application logic.
+
+Do NOT change:
+
+- `.aspx.cs` business logic
+- Database code
+- SQL queries
+- Stored procedures
+- Data access
+- API calls
+- Session logic
+- Authentication
+- Authorization
+- Login logic
+- Redirect logic
+- Validation logic
+- File upload logic
+- File download logic
+- CRUD logic
+- JavaScript functionality
+- AJAX functionality
+- WebMethods
+- Page_Load logic
+- Button Click logic
+- GridView events
+- Dropdown events
+- Repeater events
+- Data binding
+- Chart calculations
+- Existing calculations
+
+For example, the existing `Default.aspx.cs` contains database calls, data binding, and chart configuration. These must remain functionally untouched. 
+
+Only change the presentation layer.
+
+---
+
+# 16. DO NOT CHANGE CONTROL IDs
+
+Preserve every existing:
+
+```text
+ID
+ClientID
+runat="server"
+OnClick
+OnLoad
+OnSelectedIndexChanged
+OnRowCommand
+OnRowDataBound
+OnTextChanged
+CommandName
+CommandArgument
+```
+
+Do not rename controls.
+
+Do not remove controls.
+
+Do not change event wiring.
+
+Do not change JavaScript selectors that depend on existing IDs.
+
+---
+
+# 17. DO NOT REMOVE EXISTING FUNCTIONAL ELEMENTS
+
+Even if an element looks outdated, do NOT remove it.
+
+Preserve:
+
+- Buttons
+- TextBoxes
+- Dropdowns
+- GridViews
+- Repeaters
+- Panels
+- HiddenFields
+- LinkButtons
+- HyperLinks
+- Captcha
+- Validators
+- FileUpload
+- Server controls
+- Menu items
+
+Only change their visual presentation.
+
+---
+
+# 18. COLOR AUDIT
+
+After completing the redesign, scan the entire PFAD project for existing colors.
+
+Find:
+
+```text
+#xxxxxx
+rgb(...)
+rgba(...)
+named colors
+Bootstrap contextual colors
+inline background colors
+inline text colors
+```
+
+Replace PFAD-specific theme colors with the centralized CSS variables where appropriate.
+
+The final PFAD theme should consistently use:
+
+```text
+#6C1340
+#A32966
+#EBADCC
+#FAEBF2
+```
+
+Do not leave random blue, green, orange, purple, red, or other theme colors in PFAD UI unless a third-party/functional component absolutely requires a specific color.
+
+---
+
+# 19. DO NOT MODIFY OTHER PROJECT MODULES
+
+The theme must be scoped ONLY to PFAD.
+
+Do not accidentally change:
+
+- Other project folders
+- Other modules
+- Other Master Pages
+- Other Login pages
+- Other CSS
+- Other applications
+
+The PFAD theme must not leak into unrelated modules.
+
+---
+
+# 20. CSS ARCHITECTURE
+
+Prefer a structure like:
+
+```css
+:root {
+    --pfad-primary-dark: #6C1340;
+    --pfad-primary: #A32966;
+    --pfad-accent: #EBADCC;
+    --pfad-light: #FAEBF2;
+}
+
+.pfad-theme {
+    --pfad-primary-dark: #6C1340;
+    --pfad-primary: #A32966;
+    --pfad-accent: #EBADCC;
+    --pfad-light: #FAEBF2;
+}
+```
+
+Then create reusable components:
+
+```css
+.pfad-theme .pfad-header {}
+.pfad-theme .pfad-navbar {}
+.pfad-theme .pfad-sidebar {}
+.pfad-theme .pfad-card {}
+.pfad-theme .pfad-card-header {}
+.pfad-theme .pfad-button {}
+.pfad-theme .pfad-button-secondary {}
+.pfad-theme .pfad-table {}
+.pfad-theme .pfad-form-control {}
+.pfad-theme .pfad-page-title {}
+.pfad-theme .pfad-section {}
+.pfad-theme .pfad-alert {}
+.pfad-theme .pfad-login {}
+```
+
+Do not create unnecessary page-specific CSS when a reusable PFAD class can solve the problem.
+
+---
+
+# 21. MINIMUM CODE CHANGES
+
+Follow this priority:
+
+1. Centralized CSS
+2. Existing Master Page/layout
+3. Existing HTML classes
+4. Minimal ASPX markup changes only if necessary
+5. ZERO backend/business logic changes
+
+Do not rewrite pages unnecessarily.
+
+Do not refactor working code.
+
+Do not "clean up" unrelated code.
+
+Do not upgrade frameworks/libraries.
+
+Do not change Bootstrap versions.
+
+Do not change NuGet packages.
+
+Do not change configuration unless absolutely necessary for loading the CSS.
+
+---
+
+# 22. VALIDATION AFTER CHANGES
+
+After completing the work, verify:
+
+### UI
+- Default.aspx remains visually correct.
+- All PFAD internal pages use the same theme.
+- Login uses the same theme.
+- Header is consistent.
+- Navbar is consistent.
+- Buttons are consistent.
+- Tables/GridViews are consistent.
+- Forms are consistent.
+- Cards/panels are consistent.
+- Mobile layout works.
+
+### Functionality
+Verify that:
+
+- Login still works.
+- Postbacks still work.
+- Buttons still work.
+- GridViews still work.
+- Dropdowns still work.
+- Forms still submit.
+- Database operations remain unchanged.
+- Existing JavaScript remains functional.
+- Existing validation remains functional.
+- Existing redirects remain unchanged.
+
+### Code
+Verify:
+
+- No backend logic was changed.
+- No database logic was changed.
+- No stored procedure was changed.
+- No API logic was changed.
+- No control IDs were changed.
+- No event handlers were changed.
+- No unnecessary files were modified.
+- CSS is centralized.
+- PFAD colors are centralized.
+
+---
+
+# 23. FINAL REPORT
+
+When finished, provide a concise report containing:
+
+1. Files modified
+2. Centralized CSS file used/created
+3. PFAD CSS variables created
+4. Pages updated
+5. Login redesign completed
+6. Master Pages updated, if applicable
+7. Confirmation that backend/business logic was NOT changed
+8. Confirmation that control IDs/events were preserved
+9. Confirmation that the theme is limited to PFAD
+10. Any remaining UI limitations
+
+## FINAL RULE
+
+Treat this entire task as:
+
+**"PFAD UI/UX and centralized theme redesign ONLY."**
+
+NOT as:
+
+- Backend development
+- Refactoring
+- Database development
+- API development
+- Authentication development
+- Business logic modification
+- Architecture modification
+
+If there is ever a conflict between visual improvement and preserving functionality:
+
+**PRESERVE THE EXISTING FUNCTIONALITY.**
+
+Use CSS and presentation-layer techniques instead.
+
+Do not change logic under any circumstances.
