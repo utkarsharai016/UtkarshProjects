@@ -1,0 +1,1 @@
+@supabase shout out, their MCP is awesome. It's helping me create better row securities and telling me best practises for setting up a supabase app
